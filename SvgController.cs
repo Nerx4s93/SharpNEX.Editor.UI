@@ -12,7 +12,7 @@ namespace SharpNEX.Editor.UI
         public static SvgDocument GetSvgDocumentFromResourcesName(string name)
         {
             var resourceManager = new ResourceManager(
-                "DockPanelControler.Properties.Resources",
+                "SharpNEX.Editor.UI.Properties.Resources",
                 Assembly.GetCallingAssembly());
 
             byte[] resourceBytes = (byte[])resourceManager.GetObject(name);
