@@ -5,14 +5,14 @@ using System.Resources;
 
 using Svg;
 
-namespace DockPanelControler
+namespace SharpNEX.Editor.UI
 {
     internal static class SvgController
     {
         public static SvgDocument GetSvgDocumentFromResourcesName(string name)
         {
             var resourceManager = new ResourceManager(
-                "DockPanelControler.Properties.Resources", 
+                "DockPanelControler.Properties.Resources",
                 Assembly.GetCallingAssembly());
 
             byte[] resourceBytes = (byte[])resourceManager.GetObject(name);
