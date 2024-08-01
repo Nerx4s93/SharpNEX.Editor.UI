@@ -33,7 +33,7 @@ namespace SharpNEX.Editor.UI
             }
         }
 
-        public Color LogoColorFormNotActive { get; set; } = Color.Black;
+        public Color LogoColorFormNotActive { get; set; } = Color.Gray;
 
         public Color LogoColorFormActive { get; set; } = Color.White;
 
@@ -59,7 +59,7 @@ namespace SharpNEX.Editor.UI
             SvgController.ChangeFillColor(svgDocument, svgColor);
 
             var image = SvgController.GetBitmapFromSvgDocument(svgDocument, new Size(Size.Height, Size.Height / 2));
-            graphics.DrawImage(image, -5, Size.Height / 2 - 20);
+            graphics.DrawImage(image, 0, Size.Height / 2 - Size.Height / 4);
         }
     }
 }
