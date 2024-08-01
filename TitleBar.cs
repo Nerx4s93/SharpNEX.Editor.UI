@@ -14,7 +14,7 @@ namespace SharpNEX.Editor.UI
         public TitleBar()
         {
             DoubleBuffered = true;
-            Dock = DockStyle.Top;
+            base.Dock = DockStyle.Top;
             BackColor = Color.FromArgb(31, 31, 31);
         }
 
@@ -29,7 +29,7 @@ namespace SharpNEX.Editor.UI
             }
             set
             {
-                base.Dock = value;
+
             }
         }
 
