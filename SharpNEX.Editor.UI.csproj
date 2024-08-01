@@ -71,6 +71,7 @@
     <Compile Include="TitleBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TrackingFormActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
