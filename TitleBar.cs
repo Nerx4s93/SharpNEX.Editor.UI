@@ -19,6 +19,7 @@ namespace SharpNEX.Editor.UI
             DoubleBuffered = true;
             base.Dock = DockStyle.Top;
             BackColor = Color.FromArgb(31, 31, 31);
+            ForeColor = Color.White;
         }
 
         #region Свойства
@@ -40,6 +41,8 @@ namespace SharpNEX.Editor.UI
 
         public Color LogoColorFormActive { get; set; } = Color.White;
 
+        public Color ForeColorFormActive { get; set; } = Color.White;
+
         #endregion
 
         protected override void CreateHandle()
@@ -50,11 +53,8 @@ namespace SharpNEX.Editor.UI
             _titleBarButtonsController = new TitleBarButtonsController(this);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        private void DrawSvg(Graphics graphics)
         {
-            base.OnPaint(e);
-
-            var graphics = e.Graphics;
             var form = FindForm();
 
             var svgDocument = SvgController.GetSvgDocumentFromResourcesName("logo");
@@ -64,6 +64,28 @@ namespace SharpNEX.Editor.UI
 
             var image = SvgController.GetBitmapFromSvgDocument(svgDocument, new Size(Size.Height, Size.Height / 2));
             graphics.DrawImage(image, 0, Size.Height / 2 - Size.Height / 4);
+        }
+
+        private void DrawText(Graphics graphics)
+        {
+            var textSize = graphics.MeasureString(Text, Font);
+
+            var textColor = _trackingFormActivity.IsFormActive ? ForeColorFormActive : ForeColor;
+            using (var solidBrush = new SolidBrush(textColor))
+            {
+                float textLocationX = Size.Height + 15;
+                float textLocationY = (Size.Height - textSize.Height) / 2;
+
+                graphics.DrawString(Text, Font, solidBrush, new PointF(textLocationX, textLocationY));
+            }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            var graphics = e.Graphics;
+
+            DrawSvg(graphics);
+            DrawText(graphics);
         }
     }
 }
