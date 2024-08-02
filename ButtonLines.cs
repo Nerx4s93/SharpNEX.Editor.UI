@@ -20,6 +20,14 @@ namespace SharpNEX.Editor.UI
 
         #endregion
 
+        public void AddLine(Line line)
+        {
+            List<Line> listLines = Lines.ToList();
+            listLines.Add(line);
+
+            Lines = listLines.ToArray();
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
