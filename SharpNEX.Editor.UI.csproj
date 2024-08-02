@@ -71,6 +71,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\FormMover.cs" />
+    <Compile Include="Components\TitleBarButtonsController.cs" />
     <Compile Include="GUI\FormTitleBarlessBase.cs">
       <SubType>Form</SubType>
     </Compile>

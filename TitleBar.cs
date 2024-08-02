@@ -12,6 +12,7 @@ namespace SharpNEX.Editor.UI
     {
         private FormMover _formMover;
         private TrackingFormActivity _trackingFormActivity;
+        private TitleBarButtonsController _titleBarButtonsController;
 
         public TitleBar()
         {
@@ -46,6 +47,7 @@ namespace SharpNEX.Editor.UI
             base.CreateHandle();
             _formMover = new FormMover(this);
             _trackingFormActivity = new TrackingFormActivity(this, FindForm());
+            _titleBarButtonsController = new TitleBarButtonsController(this);
         }
 
         protected override void OnPaint(PaintEventArgs e)
