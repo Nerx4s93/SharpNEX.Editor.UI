@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 
+using SharpNEX.Editor.UI.Components;
+
 #pragma warning disable CS0114
 
 namespace SharpNEX.Editor.UI

@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace SharpNEX.Editor.UI
+namespace SharpNEX.Editor.UI.Components
 {
     internal class FormMover
     {
