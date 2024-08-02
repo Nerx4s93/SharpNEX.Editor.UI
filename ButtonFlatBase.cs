@@ -14,14 +14,14 @@ namespace SharpNEX.Editor.UI
         public ButtonFlatBase()
         {
             DoubleBuffered = true;
-            BackColor = Color.Gainsboro;
+            BackColor = Color.FromArgb(31, 31, 31);
         }
 
         #region Свойства
 
-        public Color BackColorOnMouseEnter { get; set; } = Color.FromArgb(210, 210, 210);
+        public Color BackColorOnMouseEnter { get; set; } = Color.FromArgb(61, 61, 61);
 
-        public Color BackColorOnMouseDown { get; set; } = Color.FromArgb(200, 200, 200);
+        public Color BackColorOnMouseDown { get; set; } = Color.FromArgb(56, 56, 56);
 
         #endregion
 
