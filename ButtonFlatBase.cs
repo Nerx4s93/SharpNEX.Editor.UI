@@ -1,10 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace SharpNEX.Editor.UI
 {
-    internal class ButtonFlatBase : Control
+    [ToolboxItem(false)]
+    public class ButtonFlatBase : Control
     {
         private bool _mouseEnter;
         private bool _mouseDown;

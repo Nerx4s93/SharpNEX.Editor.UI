@@ -2,7 +2,7 @@
 
 namespace SharpNEX.Editor.UI.Data
 {
-    internal class Line
+    public class Line
     {
         public Point PointStart { get; set; } = Point.Empty;
 
