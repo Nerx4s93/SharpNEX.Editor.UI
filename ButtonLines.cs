@@ -1,13 +1,14 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 using SharpNEX.Editor.UI.Data;
 
 namespace SharpNEX.Editor.UI
 {
-    [ToolboxItem(true)]
-    public class ButtonLines : ButtonFlatBase
+    internal class ButtonLines : ButtonFlatBase
     {
         public ButtonLines()
         {
