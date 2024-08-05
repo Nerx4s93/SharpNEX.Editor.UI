@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Resources;
@@ -15,18 +16,17 @@ namespace SharpNEX.Editor.UI
                 "SharpNEX.Editor.UI.Properties.Resources",
                 Assembly.GetCallingAssembly());
 
-            byte[] resourceBytes = (byte[])resourceManager.GetObject(name);
+            var resourceBytes = (byte[])resourceManager.GetObject(name);
 
-            if (resourceBytes != null)
+            if (resourceBytes == null)
             {
-                using (var stream = new MemoryStream(resourceBytes))
-                {
-                    var svgDocument = SvgDocument.Open<SvgDocument>(stream);
-                    return svgDocument;
-                }
+                throw new ArgumentException($"SVG с именем '{name}' не найден.", nameof(name));
             }
-
-            return null;
+            using (var memoryStream = new MemoryStream(resourceBytes))
+            {
+                var svgDocument = SvgDocument.Open<SvgDocument>(memoryStream);
+                return svgDocument;
+            }
         }
 
         public static Bitmap GetBitmapFromSvgDocument(SvgDocument svgDocument, Size size)
@@ -35,9 +35,9 @@ namespace SharpNEX.Editor.UI
             svgDocument.Height = size.Height;
 
             var bitmap = new Bitmap(size.Width, size.Height);
-            using (var g = Graphics.FromImage(bitmap))
+            using (var graphics = Graphics.FromImage(bitmap))
             {
-                svgDocument.Draw(g);
+                svgDocument.Draw(graphics);
             }
 
             return bitmap;
@@ -45,9 +45,11 @@ namespace SharpNEX.Editor.UI
 
         public static void ChangeFillColor(SvgDocument svgDocument, Color fillColor)
         {
-            foreach (var element in svgDocument.Descendants())
+            var svgElements = svgDocument.Descendants();
+
+            foreach (var svgElement in svgElements)
             {
-                if (element is SvgPath svgPath)
+                if (svgElement is SvgPath svgPath)
                 {
                     svgPath.Fill = new SvgColourServer(fillColor);
                 }
