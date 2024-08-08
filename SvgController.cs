@@ -22,6 +22,7 @@ namespace SharpNEX.Editor.UI
             {
                 throw new ArgumentException($"SVG с именем '{name}' не найден.", nameof(name));
             }
+
             using (var memoryStream = new MemoryStream(resourceBytes))
             {
                 var svgDocument = SvgDocument.Open<SvgDocument>(memoryStream);
