@@ -3,13 +3,20 @@ using System.Windows.Forms;
 
 namespace SharpNEX.Editor.UI
 {
-    public class DarkThemeToolStripRenderer : ToolStripProfessionalRenderer
+    public class ToolStripRenderer : ToolStripProfessionalRenderer
     {
-        private readonly Color ForeColor = Color.White;
+        private readonly Color _foreColor;
+        private readonly Color _fonColor;
+        private readonly Color _itemSelectedColor;
+        private readonly Color _itemPressedColor;
 
-        private readonly Color _fonColor = Color.FromArgb(31, 31, 31);
-        private readonly Color _itemSelectedColor = Color.FromArgb(61, 61, 61);
-        private readonly Color _itemPressedColor = Color.FromArgb(46, 46, 46);
+        public ToolStripRenderer(Color foreColot, Color fonColor, Color itemSelectedColor, Color itemPressedColor)
+        {
+            _foreColor = foreColot;
+            _fonColor = fonColor;
+            _itemSelectedColor = itemSelectedColor;
+            _itemPressedColor = itemPressedColor;
+        }
 
         protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
         {
