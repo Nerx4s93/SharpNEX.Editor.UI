@@ -8,7 +8,10 @@ namespace SharpNEX.Editor.UI.Components
 {
     internal class TitleBarButtonsController
     {
+        private const float _defaultHeight = 45;
+
         private readonly TitleBar _titleBar;
+        private float _percentageSize;
 
         private readonly ButtonLines _buttonMinimize;
         private readonly ButtonLines _buttonMaximize;
@@ -17,44 +20,66 @@ namespace SharpNEX.Editor.UI.Components
         public TitleBarButtonsController(TitleBar titleBar)
         {
             _titleBar = titleBar;
+            _titleBar.Resize += TitleBarResize;
+            _percentageSize = _titleBar.Size.Height / _defaultHeight;
 
             _buttonMinimize = new ButtonLines();
             _buttonMaximize = new ButtonLines();
             _buttonClose = new ButtonLines();
-            AdjustButtonts();
-        }
-
-        private void AdjustButtonts()
-        {
-            int x1 = 19; int y1 = 16;
-            int x2 = 31; int y2 = 28;
-            var titleBarSize = _titleBar.Size;
-
-            _buttonMinimize.Size = new Size(50, 45);
-            _buttonMinimize.AddLine(new Line(x1, (y1 + y2) / 2, x2, (y1 + y2) / 2));
-            _buttonMinimize.Location = new Point(titleBarSize.Width - 150, 0);
-            _buttonMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            _buttonMinimize.Click += ButtonMinimizeClick;
-
-            _buttonMaximize.Size = new Size(50, 45);
-            _buttonMaximize.AddLine(new Line(x1, y1, x2, y1));
-            _buttonMaximize.AddLine(new Line(x2, y1, x2, y2));
-            _buttonMaximize.AddLine(new Line(x2, y2, x1, y2));
-            _buttonMaximize.AddLine(new Line(x1, y2, x1, y1));
-            _buttonMaximize.Location = new Point(titleBarSize.Width - 100, 0);
-            _buttonMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            _buttonMaximize.Click += ButtonMaximizeClick;
-
-            _buttonClose.Size = new Size(50, 45);
-            _buttonClose.AddLine(new Line(x1, y1, x2, y2));
-            _buttonClose.AddLine(new Line(x2, y1, x1, y2));
-            _buttonClose.Location = new Point(titleBarSize.Width - 50, 0);
-            _buttonClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            _buttonClose.Click += ButtonCloseClick;
 
             _titleBar.Controls.Add(_buttonMinimize);
             _titleBar.Controls.Add(_buttonMaximize);
             _titleBar.Controls.Add(_buttonClose);
+
+            AdjustButtonts();
+        }
+
+        private void TitleBarResize(object sender, EventArgs e)
+        {
+            _percentageSize = Convert.ToSingle(_titleBar.Size.Height) / _defaultHeight;
+            AdjustButtonts();
+        }
+
+        private void Clear()
+        {
+            _buttonMinimize.Clear();
+            _buttonMaximize.Clear();
+            _buttonClose.Clear();
+        }
+
+        private void AdjustButtonts()
+        {
+            Clear();
+
+            var titleBarSize = _titleBar.Size;
+
+            int width = Convert.ToInt32(50 * _percentageSize);
+            int height = titleBarSize.Height;
+
+            int x1 = Convert.ToInt32(19 * _percentageSize); int y1 = Convert.ToInt32(16 * _percentageSize);
+            int x2 = Convert.ToInt32(31 * _percentageSize); int y2 = Convert.ToInt32(28 * _percentageSize);
+
+            _buttonMinimize.Size = new Size(width, height);
+            _buttonMinimize.AddLine(new Line(x1, (y1 + y2) / 2, x2, (y1 + y2) / 2));
+            _buttonMinimize.Location = new Point(titleBarSize.Width - Convert.ToInt32(150 * _percentageSize), 0);
+            _buttonMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            _buttonMinimize.Click += ButtonMinimizeClick;
+
+            _buttonMaximize.Size = new Size(width, height);
+            _buttonMaximize.AddLine(new Line(x1, y1, x2, y1));
+            _buttonMaximize.AddLine(new Line(x2, y1, x2, y2));
+            _buttonMaximize.AddLine(new Line(x2, y2, x1, y2));
+            _buttonMaximize.AddLine(new Line(x1, y2, x1, y1));
+            _buttonMaximize.Location = new Point(titleBarSize.Width - Convert.ToInt32(100 * _percentageSize), 0);
+            _buttonMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            _buttonMaximize.Click += ButtonMaximizeClick;
+
+            _buttonClose.Size = new Size(width, height);
+            _buttonClose.AddLine(new Line(x1, y1, x2, y2));
+            _buttonClose.AddLine(new Line(x2, y1, x1, y2));
+            _buttonClose.Location = new Point(titleBarSize.Width - Convert.ToInt32(50 * _percentageSize), 0);
+            _buttonClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            _buttonClose.Click += ButtonCloseClick;
         }
 
         private void ButtonMinimizeClick(object sender, EventArgs e)
