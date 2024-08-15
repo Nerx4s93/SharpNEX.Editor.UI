@@ -72,7 +72,7 @@
     </Compile>
     <Compile Include="Components\FormMover.cs" />
     <Compile Include="Components\TitleBarButtonsController.cs" />
-    <Compile Include="DarkThemeToolStripRenderer.cs" />
+    <Compile Include="ToolStripRenderer.cs" />
     <Compile Include="GUI\FormTitleBarlessBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +91,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\TrackingFormActivity.cs" />
+    <Compile Include="MenuStripTheme.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
