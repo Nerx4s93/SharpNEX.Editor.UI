@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Windows.Media.Media3D;
 using SharpNEX.Editor.UI.Data;
 
 namespace SharpNEX.Editor.UI.Components
