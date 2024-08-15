@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Components\FormMover.cs" />
     <Compile Include="Components\TitleBarButtonsController.cs" />
+    <Compile Include="DarkThemeToolStripRenderer.cs" />
     <Compile Include="GUI\FormTitleBarlessBase.cs">
       <SubType>Form</SubType>
     </Compile>
