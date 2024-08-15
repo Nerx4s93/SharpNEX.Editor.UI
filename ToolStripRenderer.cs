@@ -37,7 +37,7 @@ namespace SharpNEX.Editor.UI
             var size = item.Size;
             var bounds = new Rectangle(0, 0, size.Width, size.Height);
 
-            item.ForeColor = ForeColor;
+            item.ForeColor = _foreColor;
 
             if (e.Item.Selected)
             {
@@ -58,7 +58,7 @@ namespace SharpNEX.Editor.UI
 
         protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
         {
-            e.TextColor = ForeColor;
+            e.TextColor = _foreColor;
             base.OnRenderItemText(e);
         }
     }
