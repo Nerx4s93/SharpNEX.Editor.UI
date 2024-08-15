@@ -20,6 +20,11 @@ namespace SharpNEX.Editor.UI
 
         #endregion
 
+        public void Clear()
+        {
+            Lines = new Line[0];
+        }
+
         public void AddLine(Line line)
         {
             List<Line> listLines = Lines.ToList();
