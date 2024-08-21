@@ -30,8 +30,7 @@ namespace SharpNEX.Editor.UI.GUI
             int style = GetWindowLong(hwnd, GWL_STYLE);
             SetWindowLong(hwnd, GWL_STYLE, style & ~WS_CAPTION);
 
-            Width += 1;
-            Width -= 1;
+            Height -= 25;
         }
     }
 }
