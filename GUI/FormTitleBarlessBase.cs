@@ -29,8 +29,11 @@ namespace SharpNEX.Editor.UI.GUI
             IntPtr hwnd = Handle;
             int style = GetWindowLong(hwnd, GWL_STYLE);
             SetWindowLong(hwnd, GWL_STYLE, style & ~WS_CAPTION);
+        }
 
-            Height -= 25;
+        private void FormTitleBarlessBase_Shown(object sender, EventArgs e)
+        {
+            Height -= DesignMode ? 50 : 25;
         }
     }
 }

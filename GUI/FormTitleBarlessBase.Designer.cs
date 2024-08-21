@@ -38,6 +38,7 @@
             this.Name = "FormTitleBarlessBase";
             this.Text = "FormTitleBarlessBase";
             this.Load += new System.EventHandler(this.FormTitleBarlessBase_Load);
+            this.Shown += new System.EventHandler(this.FormTitleBarlessBase_Shown);
             this.ResumeLayout(false);
 
         }
