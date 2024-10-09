@@ -1,5 +1,9 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
+
+using SharpNEX.Engine;
 
 namespace SharpNEX.Editor.UI
 {
@@ -8,6 +12,7 @@ namespace SharpNEX.Editor.UI
         public TreeViewGameObjects()
         {
             DrawMode = TreeViewDrawMode.OwnerDrawText;
+            LoadTreeView();
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -41,6 +46,76 @@ namespace SharpNEX.Editor.UI
             }
 
             e.DrawDefault = false;
+        }
+
+        protected override void OnDoubleClick(EventArgs e)
+        {
+            SelectedNode?.BeginEdit();
+        }
+
+        protected override void OnAfterLabelEdit(NodeLabelEditEventArgs e)
+        {
+            var gameObject = e.Node.Tag as GameObject;
+            gameObject.Name = e.Label;
+        }
+
+        public void LoadTreeView()
+        {
+            Nodes.Clear();
+
+            var gameObjects = Game.Data.Scene?.GetGameObjects();
+
+            if (gameObjects != null)
+            {
+                foreach (var gameObject in gameObjects)
+                {
+                    AddGameObjectToTreeView(gameObject);
+                }
+            }
+        }
+
+        public TreeNode AddGameObjectToTreeView(GameObject gameObject)
+        {
+            var treeNode = new TreeNode(gameObject.Name)
+            {
+                Tag = gameObject
+            };
+
+            if (gameObject.Parent == null)
+            {
+                Nodes.Add(treeNode);
+            }
+            else
+            {
+                var treeNodeList = GetAllNodes(this);
+
+                var treeNodeParent = treeNodeList.Find(x => x.Tag as GameObject == gameObject.Parent);
+
+                treeNodeParent.Nodes.Add(treeNode);
+            }
+
+            return treeNode;
+        }
+
+        public static List<TreeNode> GetAllNodes(TreeView treeView)
+        {
+            var result = new List<TreeNode>();
+            foreach (TreeNode child in treeView.Nodes)
+            {
+                result.AddRange(GetAllNodes(child));
+            }
+            return result;
+        }
+
+        public static List<TreeNode> GetAllNodes(TreeNode treeNove)
+        {
+            var result = new List<TreeNode>();
+            result.Add(treeNove);
+            foreach (TreeNode child in treeNove.Nodes)
+            {
+                result.AddRange(GetAllNodes(child));
+            }
+            return result;
         }
     }
 }
