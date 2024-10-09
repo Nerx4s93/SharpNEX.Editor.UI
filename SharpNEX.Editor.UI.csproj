@@ -95,5 +95,11 @@
   <ItemGroup>
     <None Include="Resources\logo.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharpNEX.Game\SharpNEX.Game.csproj">
+      <Project>{98c6dffb-fa75-4013-a0d8-d5b9cf41ea31}</Project>
+      <Name>SharpNEX.Game</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
