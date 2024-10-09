@@ -11,6 +11,7 @@ namespace SharpNEX.Editor.UI
     {
         public TreeViewGameObjects()
         {
+            LabelEdit = true;
             DrawMode = TreeViewDrawMode.OwnerDrawText;
             LoadTreeView();
         }
