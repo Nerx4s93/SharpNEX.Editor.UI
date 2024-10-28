@@ -29,6 +29,10 @@ namespace SharpNEX.Editor.UI
                     SelectedNode = clickedNode;
                 }
             }
+            else
+            {
+                SelectedNode = null;
+            }
         }
 
         protected override void OnDrawNode(DrawTreeNodeEventArgs e)
