@@ -55,12 +55,6 @@
     <Compile Include="Components\FormMover.cs" />
     <Compile Include="Components\TitleBarButtonsController.cs" />
     <Compile Include="ToolStripRenderer.cs" />
-    <Compile Include="GUI\FormTitleBarlessBase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\FormTitleBarlessBase.Designer.cs">
-      <DependentUpon>FormTitleBarlessBase.cs</DependentUpon>
-    </Compile>
     <Compile Include="Data\Line.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -84,9 +78,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="GUI\FormTitleBarlessBase.resx">
-      <DependentUpon>FormTitleBarlessBase.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
