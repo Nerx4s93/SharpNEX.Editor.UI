@@ -55,8 +55,6 @@ namespace SharpNEX.Editor.UI
 
         private void DrawSvg(Graphics graphics)
         {
-            var form = FindForm();
-
             var svgDocument = SvgController.GetSvgDocumentFromResourcesName("logo");
 
             var svgColor = _trackingFormActivity.IsFormActive ? LogoColorFormActive : LogoColorFormNotActive;
