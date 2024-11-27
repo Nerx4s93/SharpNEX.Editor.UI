@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -54,6 +55,12 @@
     </Compile>
     <Compile Include="Components\FormMover.cs" />
     <Compile Include="Components\TitleBarButtonsController.cs" />
+    <Compile Include="CustomFromBaase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomFromBaase.Designer.cs">
+      <DependentUpon>CustomFromBaase.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCustomizer.cs" />
     <Compile Include="ToolStripRenderer.cs" />
     <Compile Include="Data\Line.cs" />
@@ -79,6 +86,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CustomFromBaase.resx">
+      <DependentUpon>CustomFromBaase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
