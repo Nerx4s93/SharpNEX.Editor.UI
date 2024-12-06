@@ -9,14 +9,15 @@ namespace SharpNEX.Editor.UI
             InitializeComponent();
         }
 
-        private void CustomFromBaase_Shown(object sender, System.EventArgs e)
+        protected override CreateParams CreateParams
         {
-            FormCustomizer.RoundEdges(this);
-        }
-
-        private void CustomFromBaase_Resize(object sender, System.EventArgs e)
-        {
-            FormCustomizer.RoundEdges(this);
+            get
+            {
+                const int WS_SIZEBOX = 0x40000;
+                var cp = base.CreateParams;
+                cp.Style |= WS_SIZEBOX;
+                return cp;
+            }
         }
     }
 }

@@ -38,8 +38,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CustomFromBaase";
             this.Text = "CustomFromBaase";
-            this.Shown += new System.EventHandler(this.CustomFromBaase_Shown);
-            this.Resize += new System.EventHandler(this.CustomFromBaase_Resize);
             this.ResumeLayout(false);
 
         }
